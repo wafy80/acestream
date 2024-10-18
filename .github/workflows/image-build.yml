@@ -7,6 +7,8 @@ jobs:
     build:
       name: push docker image to docker hub
       runs-on: ubuntu-latest
+      permissions:
+        packages: write
       steps:
         - uses: actions/checkout@v2
         - name: login to docker hub
