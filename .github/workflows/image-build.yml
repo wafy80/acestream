@@ -14,14 +14,14 @@ jobs:
           env:
             username: ${{secrets.DOCKERHUB_USERNAME}}
             password: ${{secrets.DOCKERHUB_PASSWORD}}
-            img-name: wafy80/acestream
+            tag: wafy80/acestream
           run: |
             docker login -u $username -p $password 
         - name: build the docker image
           id: build-docker-image
           run: |
             ls -la 
-            docker build . -f Dockerfile -t $img-name
+            docker build . -f Dockerfile -t $tag
         - name: push the docker image
           id: push-docker-image
-          run: docker push $img-name
+          run: docker push $tag
