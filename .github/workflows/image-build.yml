@@ -24,3 +24,15 @@ jobs:
         - name: push the docker image
           id: push-docker-image
           run: docker push wafy80/acestream
+        - name: Login to GitHub Container Registry
+          uses: docker/login-action@v3
+          with:
+            registry: ghcr.io
+            username: ${{ github.actor }}
+            password: ${{ secrets.GITHUB_TOKEN }}
+        - name: Build & Publish Docker Image
+          uses: docker/build-push-action@v6
+          with:
+              push: true
+              platforms: linux/amd64
+              tags: ghcr.io/wafy80/acestream    
