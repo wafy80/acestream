@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'Dockerfile'      
 jobs:
     build:
       name: push docker image to docker hub
