@@ -2,58 +2,67 @@
 ![Docker Image Size](https://img.shields.io/docker/image-size/wafy80/acestream)
 ![Docker Build](https://github.com/wafy80/acestream/actions/workflows/image-build.yml/badge.svg)
 
-# AceStream Docker Image
+# 🚀 AceStream Docker Image
 
-This Docker image allows you to run AceStream in a container, simplifying the installation and use of the software.
+Stream your favorite P2P content effortlessly with AceStream in a lightweight Docker container. No setup hassle—just run and play!
 
-## Requirements
+## 🌟 Features
+- **Easy Setup**: Start streaming in seconds with a single command.
+- **Lightweight**: Minimal image size for fast deployment.
+- **Customizable**: Configure ports and parameters to suit your needs.
+- **Compatible**: Works seamlessly with media players like VLC.
+
+## 🛠 Requirements
 - **Docker** installed on your system.
-- A stable network connection for P2P streaming.
+- A stable internet connection for smooth P2P streaming.
 
-## How to use the Docker image
-### Starting the container
+## 🚀 Quick Start
 Run the following command to start the container:
 ```bash
 docker run -d -p 6878:6878 wafy80/acestream
 ```
 
-### Accessing the stream
-After starting the container, you can use the following URL in your preferred media player (e.g., VLC):
+### 🎥 Access Your Stream
+Use this URL in your favorite media player (e.g., VLC):
 ```
 http://<host_address>:6878/ace/getstream?id=<content_id>
 ```
-Replace `<host_address>` with the IP address or hostname of the system running the container and `<content_id>` with the ID of the content you want to play.
+Replace `<host_address>` with your system's IP or hostname and `<content_id>` with the content ID you want to stream.
 
-## Exposed ports
-- **6878**: HTTP port for accessing the web interface and video streams.
-- **8621 (optional)**: UDP port used for P2P traffic (if needed, it must be manually configured in the container).
+## 🔌 Exposed Ports
+- **6878**: HTTP port for the web interface and video streams.
+- **8621 (optional)**: UDP port for P2P traffic (improves performance).
 
-## Advanced configuration
-### Running with additional ports
-If you want to expose the UDP port 8621 to improve P2P performance, you can run the container with the following command:
+## ⚙️ Advanced Configuration
+### Enable UDP for Better Performance
+Expose the UDP port 8621 with this command:
 ```bash
 docker run -d -p 6878:6878 -p 8621:8621/udp wafy80/acestream
 ```
 
-### Customizing parameters
-You can add additional parameters to the `CMD` command to configure AceStream. For example:
+### Customize Parameters
+Add custom parameters to configure AceStream:
 ```bash
 docker run -d -p 6878:6878 wafy80/acestream --client-console --bind-all --max-peers=50
 ```
 
-## Monitoring the container
-You can check the status of the AceStream service using the integrated `HEALTHCHECK` command:
+## 📊 Monitor the Service
+Check the status of AceStream with this command:
 ```bash
 wget -q -t1 -O- 'http://127.0.0.1:6878/webui/api/service?method=get_version'
 ```
 
-## Useful resources
+## 🔗 Useful Links
 - [AceStream Official Website](https://acestream.org)
 - [Docker Hub Repository](https://hub.docker.com/r/wafy80/acestream)
 - [GitHub Actions Workflow](https://github.com/wafy80/acestream/actions/workflows/image-build.yml)
 
-## Contributing
-If you want to contribute to this project, feel free to open a pull request or report issues in the [Issues](https://github.com/wafy80/acestream/issues) section.
+## 🤝 Contribute
+Have ideas or found an issue? Open a pull request or report it in the [Issues](https://github.com/wafy80/acestream/issues) section.
 
-## License
+## 📜 License
 This project is distributed under the **WTFPL** license. See the `LICENSE` file for more details.
+
+---
+
+🎉 **Start streaming now and enjoy the power of AceStream in Docker!**
