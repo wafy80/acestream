@@ -3,7 +3,6 @@
 ![Docker Build](https://github.com/wafy80/acestream/actions/workflows/image-build.yml/badge.svg)
 
 # 🚀 AceStream Docker Image
-
 Stream your favorite P2P content effortlessly with AceStream in a lightweight Docker container. No setup hassle—just run and play!
 
 ## 🌟 Features
