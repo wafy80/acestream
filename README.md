@@ -55,7 +55,7 @@ wget -q -t1 -O- 'http://127.0.0.1:6878/webui/api/service?method=get_version'
 ## 🔗 Useful Links
 - [AceStream Official Website](https://acestream.org)
 - [Docker Hub Repository](https://hub.docker.com/r/wafy80/acestream)
-- [GitHub Actions Workflow](https://github.com/wafy80/acestream/actions/workflows/image-build.yml)
+- [GitHub Project](https://github.com/wafy80/acestream)
 
 ## 🤝 Contribute
 Have ideas or found an issue? Open a pull request or report it in the [Issues](https://github.com/wafy80/acestream/issues) section.
