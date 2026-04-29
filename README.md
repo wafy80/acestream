@@ -1,6 +1,7 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/wafy80/acestream)
 ![Docker Image Size](https://img.shields.io/docker/image-size/wafy80/acestream)
 ![Docker Build](https://github.com/wafy80/acestream/actions/workflows/image-build.yml/badge.svg)
+[![pages-build-deployment](https://github.com/wafy80/acestream/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/wafy80/acestream/actions/workflows/pages/pages-build-deployment)
 
 # 🚀 AceStream Docker Image
 Stream your favorite P2P content effortlessly with AceStream in a lightweight Docker container. No setup hassle—just run and play!
