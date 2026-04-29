@@ -1,0 +1,81 @@
+name: Update EPG
+
+on:
+  schedule:
+    - cron: "0 12 * * 1,3,5" 
+  workflow_dispatch:     # Per avviare manualmente
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - name: Delete Deployment Environment
+        uses: strumwolf/delete-deployment-environment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment: github-pages
+          onlyRemoveDeployments: true
+  del_runs:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: read
+    steps:
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 1
+          keep_minimum_runs: 1
+          
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    needs: 
+      - cleanup
+      - del_runs
+    steps:
+      - name: Checkout repository (con tutta la storia)
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Scarica tutta la storia del repository
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dipendenze
+        run: |
+          pip install requests unidecode
+          sudo apt install curl jq
+
+      - name: Scarica e processa EPG
+        run: |
+          python scripts/process_epg_light.py
+
+      - name: Configura Git e Push (solo HTML e manifest)
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "GitHub Actions Bot"
+
+          # Aggiungi solo il file modificato
+          git add docs/epg_light.xml
+          
+          # Committa il cambiamento
+          git commit -m "updated at: $(date)"
+
+          # Riscrivi la cronologia mantenendo solo l'ultimo commit per il deployment
+          git fetch origin
+          git checkout --orphan temp-branch  # Crea un nuovo branch senza cronologia
+          git add docs/epg_light.xml         # Aggiungi solo il file di deployment
+
+          git commit -m "updated at: $(date)"  # Crea un nuovo commit
+          git branch -D main                 # Elimina il branch main
+          git branch -m main                 # Rinomina temp-branch in main
+          
+          # Pusha forzando solo il nuovo commit
+          git push --force origin main
