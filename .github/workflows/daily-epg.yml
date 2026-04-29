@@ -27,14 +27,14 @@ jobs:
 
       - name: Scarica e processa EPG
         run: |
-          python scripts/process_epg_light.py
+          python scripts/process_epg.py
 
       - name: Configura Git e Push
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "GitHub Actions Bot"
           
-          git add docs/epg_light.xml
+          git add docs/epg.xml
           
           if git diff --cached --quiet; then
             echo "No changes to commit"
