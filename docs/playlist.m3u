@@ -1,4 +1,4 @@
-#EXTM3U url-tvg="https://wafy80.github.io/epg_light.xml"
+#EXTM3U url-tvg="https://wafy80.github.io/acestream/epg.xml"
 #EXTINF:-1 tvg-id="match-football1" tvg-logo="https://iptvx.one/picons/match-football1.png",Match! Futbol 1
 http://127.0.0.1:6878/ace/getstream?id=b28db77c5084da7993395d77df96c30bb134f0a9
 #EXTINF:-1 tvg-id="match-football2" tvg-logo="https://iptvx.one/picons/match-football2.png",Match! Futbol 2

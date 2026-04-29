@@ -28,7 +28,7 @@ def transliterate(text):
 
 # Estrai canali da m3u ---
 m3u_channels = set()
-m3u_list = "docs/m3u"
+m3u_list = "docs/playlist.m3u"
 
 print("Estrazione canali da m3u...")
 if not os.path.exists(m3u_list):
